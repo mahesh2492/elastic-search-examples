@@ -19,7 +19,7 @@ trait ElasticSearchOperations {
   val `type` = "employee"
 
   def insert(employee: Employee): IndexResponse = {
-    val indexRequest = new IndexRequest(index, `type`)
+    val indexRequest = new IndexRequest(index, `type`, employee.id)
     val jsonString = Json.stringify(Json.toJson(employee))
     indexRequest.source(jsonString, XContentType.JSON)
     client.index(indexRequest)
@@ -51,18 +51,14 @@ trait ElasticSearchOperations {
 }
 
 object Main extends ElasticSearchOperations with App{
+
   insert(Employee("1","mahesh","chand",25))
   insert(Employee("2","shivangi","gupta",25))
   insert(Employee("3","nancy","jain",23))
   insert(Employee("4","ankit","barthwal",24))
-  val response = delete("3")
-
-  //val searchResponse = searchByField("id","3")
-
-  //update("1","lastName", "kandpal")
-  //println("let c---" + searchResponse)
 
 
+  update("1","lastName", "kandpal")
 
   ElasticClient.client.close()
 }
