@@ -14,6 +14,8 @@ libraryDependencies ++= Seq(
   "org.elasticsearch.client" % "elasticsearch-rest-high-level-client" % "6.1.2",
 
   //play json
-  "com.typesafe.play" %% "play" % "2.6.11"
-
+  "com.typesafe.play" %% "play" % "2.6.11",
+  
+  "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+  
 )
