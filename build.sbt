@@ -15,7 +15,9 @@ libraryDependencies ++= Seq(
 
   //play json
   "com.typesafe.play" %% "play" % "2.6.11",
-  
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+
+  "org.slf4j" % "slf4j-api" % "1.7.25",
+
+  "org.slf4j" % "slf4j-log4j12" % "1.7.5"
   
 )

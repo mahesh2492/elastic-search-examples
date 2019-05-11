@@ -7,6 +7,7 @@ object Application extends App {
   val client: RestHighLevelClient = ElasticClient.client
   val elasticSearchService = new ElasticSearchService(client)
 
+  //Data for indexing
   val book1 = Book(1, "Gromyko", "True enemies", "ru", 2014, "fantastic")
   val book2 = Book(2, "Strugatsky", "The Final Circle of Paradise", "en", 1965, "fantastic")
   val book3 = Book(3, "Marquez", "One Hundred Years of Solitude", "sp", 1967, "magical realist")
@@ -29,7 +30,21 @@ object Application extends App {
   //searching data
   val data = elasticSearchService.searchByField("id", 3)
 
-  println("searched data " + data)
+  println("================================ SEARCHED DATA ================================ \n" + data)
+
+  /*
+    For updating book information for a particular id
+    elasticSearchService.update(1, "yearOfPublishing", 2000)
+   This will update the yearOfPublishing of Book having id 1
+   */
+
+  /*
+  For deleting any document of particular id of book.
+  elasticSearchService.delete(1)
+  This will delete the book having id 1
+   */
 
   ElasticClient.client.close()
+
+
 }
